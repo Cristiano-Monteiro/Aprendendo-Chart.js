@@ -25,31 +25,18 @@
         <canvas id="myChart1"></canvas>
     </div>
 
+    <script src="./exampleData.js"></script>
     <script>
     // Vertical Bar Chart
     const VerticalBarChart = document.getElementById('myChart').getContext('2d');
 
     const VerticalBarChartData = {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: exampleLabels,
         datasets: [{
-            label: 'Bar chart example',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            label: 'Vertical Bar Chart Example',
+            data: exampleData,
+            backgroundColor: exampleBackgroundColor,
+            borderColor: exampleBorderColor,
             borderWidth: 2
         }]
     }
@@ -73,16 +60,28 @@
     const HorizontalBarChart = document.getElementById('myChart1').getContext('2d');
 
     const HorizontalBarChartData = {
-        labels: '',
+        labels: exampleLabels,
         datasets: [{
-
+            label: 'Horizontal Bar Chart Example',
+            data: exampleData,
+            backgroundColor: exampleBackgroundColor,
+            borderColor: exampleBorderColor,
+            borderWidth: 1
         }]
     }
 
     const BarChart1 = new Chart(HorizontalBarChart, {
         type: 'bar',
         data: HorizontalBarChartData,
-        options: {}
+        options: {
+            indexAxis: 'y',
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            hoverBackgroundColor: true
+        }
     });
     </script>
 </body>
