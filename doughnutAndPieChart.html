@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doughnut Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js"></script>
+</head>
+<body style="display: flex;">
+    <div style="width: 50%;border: 1px solid;">
+        <canvas id="myChart1"></canvas>
+    </div>
+    <div style="width: 50%;border: 1px solid;">
+        <canvas id="myChart2"></canvas>
+    </div>
+
+    <script src="./exampleData.js"></script>
+    <script>
+        const dataChart = {
+            labels: exampleLabels,
+            datasets: [{
+                label: 'Doughnut Chart TEST',
+                data: exampleData,
+                backgroundColor: exampleBackgroundColor,
+                borderColor: exampleBorderColor,
+                hoverBackgroundColor: exampleBorderColor,
+                borderWidth: 2, 
+                borderAlign: 'center', // Alinhamento da borda do arco
+                hoverBorderWidth: 10,
+                hoverBorderColor: exampleBorderColor,
+                hoverBorderJoinStyle: 'round', // Estilo de borda quando o mouse passar por cima
+                hoverOffset: 10, // Descolamento do arco no eixo y quando o mouse passar por cima
+                spacing: 0 // Espaçamento entre os arcos
+            }]
+        };
+
+        const myChart1 = document.getElementById('myChart1').getContext('2d');
+
+        const doughnutChart = new Chart(myChart1, {
+            type: 'doughnut',
+            data: dataChart,
+            options: {
+                hoverBackgroundColor: true,
+                hoverBorderColor: true
+            }
+        });
+
+        const myChart2 = document.getElementById('myChart2').getContext('2d');
+
+        const pieChart = new Chart(myChart2, {
+            type: 'pie',
+            data: dataChart,
+            options: {
+                hoverBackgroundColor: true,
+                hoverBorderColor: true
+            }
+        });
+    </script>
+</body>
+</html>
